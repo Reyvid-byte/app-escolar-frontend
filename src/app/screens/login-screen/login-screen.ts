@@ -1,9 +1,14 @@
-import { Component } from '@angular/core';
+import { inject } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { NgxMaskDirective } from 'ngx-mask'
 
-@Component({
-  imports: [],
-  selector: 'app-login-screen',
-  styleUrl: './login-screen.scss',
-  templateUrl: './login-screen.html',
-})
-export class LoginScreen {}
+
+
+export class LoginScreen {
+  private cookies = inject(CookieService);
+
+  constructor() {
+    this.cookies.set('sesion', 'valor');
+    const valor = this.cookies.get('sesion');
+  }
+}   
